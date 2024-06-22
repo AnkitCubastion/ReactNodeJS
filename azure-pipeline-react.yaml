@@ -14,7 +14,7 @@ stages:
           - task: Docker@2
             displayName: 'Build and push React Docker image'
             inputs:
-              containerRegistry: 'ReactNodeJS'  # Ensure this matches the service connection name
+              containerRegistry: 'containerRegistery3302'  # Ensure this matches the service connection name
               repository: 'cubastion-training/sample-react-app'  # Updated GitHub repository path for the React app
               command: 'buildAndPush'
               Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'  # Path to Dockerfile for React app (assuming it's in the root)
@@ -31,7 +31,7 @@ stages:
           - task: Docker@2
             displayName: 'Build and push Node.js Docker image'
             inputs:
-              containerRegistry: 'ReactNodeJS'  # Ensure this matches the service connection name
+              containerRegistry: 'containerRegistery3302'  # Ensure this matches the service connection name
               repository: 'cubastion-training/sample-node-app'  # Updated GitHub repository path for the Node.js app
               command: 'buildAndPush'
               Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'  # Path to Dockerfile for Node.js app (assuming it's in the root)
