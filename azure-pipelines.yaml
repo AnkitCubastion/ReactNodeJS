@@ -16,7 +16,7 @@ stages:
               containerRegistry: "ReactNodeJS"
               repository: "https://github.com/cubastion-training/sample-react-app.git"
               command: "buildAndPush"
-              Dockerfile: "$(Build.SourcesDirectory)/sample-react-app/Dockerfile"
+              Dockerfile: "$(Build.SourcesDirectory)/Dockerfile"
               tags: |
                 $(Build.BuildId)
 
@@ -32,6 +32,6 @@ stages:
               containerRegistry: "ReactNodeJS"
               repository: "https://github.com/cubastion-training/sample-node-app.git"
               command: "buildAndPush"
-              Dockerfile: "$(Build.SourcesDirectory)/sample-node-app/Dockerfile"
+              Dockerfile: "$(Build.SourcesDirectory)/Dockerfile"
               tags: |
                 $(Build.BuildId)
