@@ -9,14 +9,14 @@ stages:
     jobs:
       - job: BuildReact
         pool:
-          vmImage: "ubuntu-latest"
+          name: "Azure Pipelines"
         steps:
           - task: Docker@2
             inputs:
-              containerRegistry: "ReactNodeJS"
+              containerRegistry: "React-NodeJS"
               repository: "https://github.com/cubastion-training/sample-react-app.git"
               command: "buildAndPush"
-              Dockerfile: "$(Build.SourcesDirectory)/sample-react-app/Dockerfile"
+              Dockerfile: "$(Build.SourcesDirectory)/Dockerfile"
               tags: |
                 $(Build.BuildId)
 
@@ -25,13 +25,13 @@ stages:
     jobs:
       - job: BuildNode
         pool:
-          vmImage: "ubuntu-latest"
+          name: "Azure Pipelines"
         steps:
           - task: Docker@2
             inputs:
-              containerRegistry: "ReactNodeJS"
+              containerRegistry: "React-NodeJS"
               repository: "https://github.com/cubastion-training/sample-node-app.git"
               command: "buildAndPush"
-              Dockerfile: "$(Build.SourcesDirectory)/sample-node-app/Dockerfile"
+              Dockerfile: "$(Build.SourcesDirectory)/Dockerfile"
               tags: |
                 $(Build.BuildId)
