@@ -1,0 +1,37 @@
+trigger:
+  branches:
+    include:
+      - master
+
+stages:
+  - stage: BuildReactApp
+    displayName: Build and Push React App Docker Image
+    jobs:
+      - job: BuildReact
+        pool:
+          vmImage: "ubuntu-latest"
+        steps:
+          - task: Docker@2
+            inputs:
+              containerRegistry: "ReactNodeJS"
+              repository: "https://github.com/cubastion-training/sample-react-app.git"
+              command: "buildAndPush"
+              Dockerfile: "$(Build.SourcesDirectory)/sample-react-app/Dockerfile"
+              tags: |
+                $(Build.BuildId)
+
+  - stage: BuildNodeApp
+    displayName: Build and Push Node.js App Docker Image
+    jobs:
+      - job: BuildNode
+        pool:
+          vmImage: "ubuntu-latest"
+        steps:
+          - task: Docker@2
+            inputs:
+              containerRegistry: "ReactNodeJS"
+              repository: "https://github.com/cubastion-training/sample-node-app.git"
+              command: "buildAndPush"
+              Dockerfile: "$(Build.SourcesDirectory)/sample-node-app/Dockerfile"
+              tags: |
+                $(Build.BuildId)
